@@ -49,20 +49,28 @@ cp .env.example .env
 
 Make sure your .env file has the correct database credentials for MySQL (or the database you prefer).
 
-### Step 4: Set Up the Database
+### Step 4: Generate Application Key
+
+To generate the Laravel application encryption key, run:
+
+php artisan key:generate
+
+This will set the APP_KEY in your .env file and ensure that Laravel can securely encrypt and store data.
+
+### Step 5: Set Up the Database
 
 Create a database named weatherapp:
 
 CREATE DATABASE weatherapp;
 
-### Step 5: Run Migrations and Seeders
+### Step 6: Run Migrations and Seeders
 
 Run the database migrations and seeders to set up the schema and populate it with predefined cities:
 
 php artisan migrate
 php artisan db:seed
 
-### Step 6: Start the Laravel Development Server
+### Step 7: Start the Laravel Development Server
 
 Start the Laravel development server:
 
@@ -70,7 +78,7 @@ php artisan serve
 
 The application will be accessible at http://localhost:8000.
 
-### Step 7: Run Scheduled Tasks
+### Step 8: Run Scheduled Tasks
 
 To start fetching the weather data periodically, run the following command:
 
