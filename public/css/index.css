@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #0099cc, #66ccff);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+    text-align: center;
+}
+
+.header__title {
+    color: #0077cc;
+    margin-bottom: 10px;
+}
+
+/* Content area with two columns */
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Weather Information Section */
+.weather-info {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-info__card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.weather-info__temperature {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.weather-info__description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.weather-info__details {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+.weather-info__details strong {
+    font-weight: bold;
+}
+
+.weather-info__no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.weather-info__no-data p {
+    margin-top: 20px;
+}
+
+/* Weather Data Cards */
+.weather-data-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.weather-data-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(50% - 10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.weather-data-card:hover {
+    transform: scale(1.05);
+}
+
+.weather-data-card__time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0077cc;
+}
+
+.weather-data-card__temperature {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 5px;
+}
+
+/* Graph Section */
+.graph-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal__overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal__content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal__close-btn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.modal__close-btn:hover {
+    background-color: #e53935;
+}
+
+/* Form styles */
+.modal__content label,
+.modal__content input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.modal__content input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.modal__content button.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal__content button.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Modal Show Class */
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+}
+
+/* Form Styles */
+.city-selector-form,
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.create-city-btn {
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-city-btn:hover {
+    background-color: #005fa3;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+/* Dropdown and form styling */
+.city-selector-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.city-selector-form label {
+    font-size: 16px;
+}
+
+.city-selector-form select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.delete-btn:hover {
+    background-color: #e53935;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .weather-data-card {
+        width: 100%;
+    }
+
+    .weather-info__temperature {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .weather-info__temperature {
+        font-size: 2.5rem;
+    }
+
+    .weather-data-card__time,
+    .weather-data-card__temperature {
+        font-size: 1.5rem;
+    }
+
+    .data-table th, .data-table td {
+        padding: 8px;
+    }
+
+    .submit-btn,
+    .create-city-btn {
+        font-size: 14px;
+    }
+}
