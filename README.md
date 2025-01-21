@@ -88,6 +88,9 @@ This will run the scheduled tasks that fetch the weather data every minute (or e
 
 
 ### Customization (Optional)
+
+# Change the API call frequency
+
 If you'd prefer the API to be called once every hour instead of every minute, you can adjust the task interval by modifying the cron definition:
 
 Open the bootstrap/app.php file.
@@ -97,6 +100,30 @@ Change it to: $schedule->command('weather:fetch')->hourly();
 
 This will change the frequency of the API calls to once every hour.
 
+# Disable or change SSL certificate verification
+
+If you encounter issues with SSL certificate verification when calling the Open-Meteo API (e.g., in development environments or behind corporate proxies), you can disable verification or configure a different certificate file.
+
+Open the app/Services/WeatherService.php file.
+
+Locate the section where the verify option is set:
+
+$response = Http::withOptions([
+    'verify' => $certPath,
+])->get('https://api.open-meteo.com/v1/forecast', [
+    'latitude' => $latitude,
+    'longitude' => $longitude,
+    'current_weather' => true,
+    'timezone' => 'Europe/Madrid',
+]);
+
+To disable SSL verification, change 'verify' => $certPath to 'verify' => false. This will disable SSL certificate validation.
+
+Note: Disabling SSL verification is only recommended for development environments or when using trusted internal APIs.
+
+If you need to use a different certificate file, update the $certPath variable to point to the new certificate file, for example:
+
+$certPath = storage_path('certs/new_cacert.pem');
 
 ### How to Use
 Once the server is running, visit http://localhost:8000 in your browser.
